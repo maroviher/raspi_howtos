@@ -1,0 +1,24 @@
+#get toolchain, add path to toolchain to $PATH, the toolchain ist x64, so use x64 VM!
+git clone https://github.com/Christopher83/arm-cortex_a7-linux-gnueabihf-linaro_4.9
+
+#get kernel source
+git clone --depth=1 https://github.com/raspberrypi/linux
+cd linux
+
+
+#allow all WiFi channels
+vi linux/net/wireless/db.txt
+country 00:
+	(2402 - 2494 @ 40), (20)
+	(4910 - 4990 @ 40), (23)
+	(5030 - 5090 @ 40), (23)
+	(5170 - 5250 @ 80), (20), AUTO-BW
+	(5250 - 5330 @ 80), (20), DFS, AUTO-BW
+	(5490 - 5710 @ 160), (23), DFS
+#in menuconfig Networking support -> Wireless -> use statically compiled regulatory rules database
+
+#on running PI zcat /proc/config.gz > .config
+#and copy '.config' to current dir
+#put SD-Card to your computer using SD-Card reader
+#use shell script 'compile_rpi2_kernel.sh' from this guthub repository to compile kernel
+#after PI bootet run depmod -a
