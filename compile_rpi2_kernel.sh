@@ -1,6 +1,6 @@
 usage ()
 {
-  echo 'MYCROSS_COMPILE=arm-cortex_a7-linux-gnueabihf- MOUNTED_EXT4_PART_ON_SDCARD=/tmp MOUNTED_FAT_PART_ON_SDCARD=/tmp sh compile_rpi2_kernel.sh'
+  echo 'MYCROSS_COMPILE=arm-cortex_a7-linux-gnueabihf- MOUNTED_EXT4_PART_ON_SDCARD=/media/ahmed/1234 MOUNTED_FAT_PART_ON_SDCARD=/media/ahmed/5678 sh compile_rpi2_kernel.sh'
 }
 ac_fn_c_try_compile ()
 {
