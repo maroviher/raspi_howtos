@@ -30,7 +30,7 @@ mkdir /tmp/modules_rpi2_gzip || { echo "mkdir error for /tmp/modules_rpi2_gzip" 
 make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 INSTALL_MOD_PATH=/tmp/modules_rpi2_gzip  INSTALL_MOD_STRIP=1 modules_install || { echo "modules_install error" ; exit 1; }
 find /tmp/modules_rpi2_gzip/ -name *.ko -exec gzip {} \;
 #copy gzipped KOs for new kernel
-cp -r /tmp/modules_rpi2_gzip/lib/* $MOUNTED_EXT4_PART_ON_SDCARD/lib || { echo "modules copying error to SD-Card" ; exit 1; }
+sudo cp -r /tmp/modules_rpi2_gzip/lib/* $MOUNTED_EXT4_PART_ON_SDCARD/lib || { echo "modules copying error to SD-Card" ; exit 1; }
 
 
 rm $MOUNTED_FAT_PART_ON_SDCARD/*.dtb
