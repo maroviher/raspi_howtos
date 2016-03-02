@@ -26,7 +26,7 @@ make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 || { echo "compilation error" ;
 #here is compiled kernel: '/home/ahmed/rpi2kernel/linux/arch/arm/boot/zImage'
 make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 modules || { echo "modules compilation error" ; exit 1; }
 rm -rf /tmp/modules_rpi2_gzip
-mkdir /tmp/modules_rpi2_gzip || ( echo "mkdir error for /tmp/modules_rpi2_gzip" ; exit 1; }
+mkdir /tmp/modules_rpi2_gzip || { echo "mkdir error for /tmp/modules_rpi2_gzip" ; exit 1; }
 make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 INSTALL_MOD_PATH=/tmp/modules_rpi2_gzip  INSTALL_MOD_STRIP=1 modules_install || { echo "modules_install error" ; exit 1; }
 find /tmp/modules_rpi2_gzip/ -name *.ko -exec gzip {} \;
 #copy gzipped KOs for new kernel
