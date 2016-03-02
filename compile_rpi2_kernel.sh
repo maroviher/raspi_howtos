@@ -35,6 +35,7 @@ sudo cp -r /tmp/modules_rpi2_gzip/lib/* $MOUNTED_EXT4_PART_ON_SDCARD/lib || { ec
 
 rm $MOUNTED_FAT_PART_ON_SDCARD/*.dtb
 cp arch/arm/boot/dts/*.dtb $MOUNTED_FAT_PART_ON_SDCARD/ || { echo "DTB copying error to SD-Card" ; exit 1; }
+mkdir $MOUNTED_FAT_PART_ON_SDCARD/overlays
 rm $MOUNTED_FAT_PART_ON_SDCARD/overlays/*.dtb*
 cp arch/arm/boot/dts/overlays/*.dtb* $MOUNTED_FAT_PART_ON_SDCARD/overlays/ || { echo "Overlays DTB copying error to SD-Card" ; exit 1; }
 #rm $MOUNTED_FAT_PART_ON_SDCARD/overlays/README
