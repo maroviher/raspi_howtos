@@ -1,0 +1,9 @@
+	On Server:
+		systemctl start nfs-server
+		systemctl stop nfs-server
+		echo 262144 > /proc/fs/nfsd/max_block_size
+		systemctl start nfs-server
+	
+	In Android:
+		su -mm
+		mount.nfs4 192.168.222.1:/ /storage/UsbDriveA -o vers=4,nolock,rsize=262144,wsize=262144
