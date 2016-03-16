@@ -6,4 +6,5 @@
 	
 	In Android:
 		su -mm
+		setenforce 0
 		mount.nfs4 192.168.222.1:/ /storage/UsbDriveA -o vers=4,nolock,rsize=262144,wsize=262144
