@@ -16,24 +16,6 @@
     systemctl enable autologin@tty2
     systemctl enable autologin@tty3
     ...
-
-* Power consumption Watt
-  
-  +++++++++++++++++++++++
-  Karte |idle|send
-  ------|----|---
-  ap2770|1,9 |2,3
-  ap3070|3,6 |5
-  ap5370|0,7 |1,4
-  
-  +++++++++++++++++++++++
-     PI   |idle|100%CPU
-  --------|----|-------
-  B256/512|2,2 |2,5
-  B+512   |1,45|1,65
-  Tested with Apple power supply 2A with HDMI + Keyboard
-
-  
   
 * Resize partition in the disk image file
   http://softwarebakery.com/shrinking-images-on-linux
