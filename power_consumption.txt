@@ -1,0 +1,18 @@
+  * WLAN power consumption (watt) in AP mode
+    +++++++++++++++++++++++
+  Karte |idle|send
+  ------|----|---
+  ap2770|1,9 |2,3
+  ap3070|3,6 |5
+  ap5370|0,7 |1,4
+  
+  Raspberry PI 1
+  +++++++++++++++++++++++
+     PI   |idle|100%CPU
+  --------|----|-------
+  B256/512|2,2 |2,5
+  B+512   |1,45|1,65
+  Tested with Apple power supply 2A with HDMI + Keyboard
+  
+  Turn off ethernet only (not whole USB power) on PI2 and PI3 and probably PI1 saves 0.3W
+  uhubctl -a off -p 1
