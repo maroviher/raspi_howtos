@@ -16,3 +16,9 @@
   
   Turn off ethernet only (not whole USB power) on PI2 and PI3 and probably PI1 saves 0.3W
   uhubctl -a off -p 1
+  
+  
+  Turn off USB bus, current drops to 0,6W on idle:
+  echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/unbind
+  Turn on again:
+  echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/bind
