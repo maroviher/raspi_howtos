@@ -1,5 +1,11 @@
 begin
    prog   = irexec
+   button = KEY_POWER
+   config = /sbin/reboot
+end
+
+begin
+   prog   = irexec
    button = KEY_1
    config = /bin/sh -c "ls > /tmp/vasa1"
 end
@@ -14,5 +20,23 @@ begin
    prog   = irexec
    button = KEY_3
    config = /bin/sh -c "ls > /tmp/vasa3"
+end
+
+begin
+   prog   = irexec
+   button = KEY_4
+   config = /bin/sh -c "ls > /tmp/vasa4"
+end
+
+begin
+   prog   = irexec
+   button = KEY_5
+   config = /bin/sh -c "ls > /tmp/vasa5"
+end
+
+begin
+   prog   = irexec
+   button = KEY_6
+   config = /bin/sh -c "ls > /tmp/vasa6"
 end
 
