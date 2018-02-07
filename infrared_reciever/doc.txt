@@ -1,0 +1,13 @@
+pacman -S lirc
+
+#take both files from this git repository
+#myremote.lircd.conf -> is a BN59-0937A remote for Samsung B52 inch LED TV, there is a one in the LIRC batabase, but it did not work
+#so I created my own
+cp myremote.lircd.conf /etc/lirc/lircd.conf.d
+cp lircrc ~/.config #here are actions, that are triggered when you press a button on infrared RC
+
+#in /etc/lirc/lirc_options.conf : driver = default, device = /dev/lirc0
+
+systemctl enable lircd.service
+systemctl start lircd.service
+irexec #do a systemd service from it

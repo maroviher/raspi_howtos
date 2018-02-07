@@ -1,0 +1,18 @@
+begin
+   prog   = irexec
+   button = KEY_1
+   config = /bin/sh -c "ls > /tmp/vasa1"
+end
+
+begin
+   prog   = irexec
+   button = KEY_2
+   config = /bin/sh -c "ls > /tmp/vasa2"
+end
+
+begin
+   prog   = irexec
+   button = KEY_3
+   config = /bin/sh -c "ls > /tmp/vasa3"
+end
+
