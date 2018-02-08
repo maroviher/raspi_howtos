@@ -1,0 +1,14 @@
+[Unit]
+Description=my_lirc
+After=lircd.service
+Requires=lircd.service
+#Before=default.target
+
+
+[Service]
+#a very ugly workaround using shell, because lircd makes the unix domain socket available later than irexec needs it   
+ExecStart=/bin/sh -c "while [ ! -S /var/run/lirc/lircd ]; do sleep 1 ; done ; /usr/bin/irexec /root/.config/lircrc"
+#Type=forking
+
+[Install]
+WantedBy=multi-user.target

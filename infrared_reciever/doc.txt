@@ -10,4 +10,8 @@ cp lircrc ~/.config #here are actions, that are triggered when you press a butto
 
 systemctl enable lircd.service
 systemctl start lircd.service
-irexec #do a systemd service from it
+
+
+cp lirc_actions.service /etc/systemd/system/
+systemctl enable lirc_actions.service
+systemctl start lirc_actions.service
