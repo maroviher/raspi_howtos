@@ -18,7 +18,7 @@
   uhubctl -a off -p 1
   
   
-  Turn off USB bus, current drops to 0,6W (PI2) or 0,7W (PI3) on idle, measured on input (220V) of Samsung 5.25V 2.1A charger:
+  Turn off USB bus, current drops to 0,6W (PI2) or 0,7W (PI3) or 1,2W (PI3B+) on idle, measured on input (220V) of Samsung 5.25V 2.1A charger:
   echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/unbind
   Turn on again:
   echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/bind
