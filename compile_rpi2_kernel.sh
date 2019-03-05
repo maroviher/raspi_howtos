@@ -22,19 +22,18 @@ ac_fn_c_try_compile
 [ -f '.config' ] || { echo "No kernel config, exiting..." ; exit 1; }
 make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 menuconfig || { echo "menuconfig error, exiting..." ; exit 1; }
 
-make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 || { echo "compilation error" ; exit 1; }
+make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 zImage modules dtbs || { echo "compilation error" ; exit 1; }
 #here is compiled kernel: '/home/ahmed/rpi2kernel/linux/arch/arm/boot/zImage'
-make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 modules || { echo "modules compilation error" ; exit 1; }
 MODULES_TMP_DIR=/tmp/modules_rpi2_gzip
 rm -rf $MODULES_TMP_DIR
 mkdir $MODULES_TMP_DIR || { echo "mkdir error for $MODULES_TMP_DIR" ; exit 1; }
-make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 INSTALL_MOD_PATH=$MODULES_TMP_DIR INSTALL_MOD_STRIP=1 modules_install || { echo "modules_install error" ; exit 1; }
-find $MODULES_TMP_DIR/ -name *.ko -exec gzip {} \;
+make ARCH=arm CROSS_COMPILE=$MYCROSS_COMPILE -j4 INSTALL_MOD_PATH=$MODULES_TMP_DIR modules_install || { echo "modules_install error" ; exit 1; }
+#find $MODULES_TMP_DIR/ -name *.ko -exec gzip {} \;
 #copy gzipped KOs for new kernel
 KERNEL_VER=`ls $MODULES_TMP_DIR/lib/modules/`
 [ -z "$KERNEL_VER" ] && { echo 'Unable to determine kernel version string' ; exit 1; }
 sudo rm -rf $MOUNTED_EXT4_PART_ON_SDCARD/lib/modules/$KERNEL_VER/*
-sudo cp -r $MODULES_TMP_DIR/lib/* $MOUNTED_EXT4_PART_ON_SDCARD/lib || { echo "modules copying error to SD-Card" ; exit 1; }
+sudo cp -r $MODULES_TMP_DIR/lib/modules/$KERNEL_VER $MOUNTED_EXT4_PART_ON_SDCARD/lib/modules || { echo "modules copying error to SD-Card" ; exit 1; }
 
 
 rm $MOUNTED_FAT_PART_ON_SDCARD/*.dtb
